@@ -1,0 +1,14 @@
+{
+  "name": "@thatsagoodspot-app/types",
+  "version": "1.0.0",
+  "description": "Holds type definitions for across the monorepo",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^5.5.4"
+  }
+}

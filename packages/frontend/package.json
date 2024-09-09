@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@thatsagoodspot-app/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,11 +12,13 @@
     "@repo/ui": "*",
     "next": "14.2.6",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "types": "^0.1.1"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@thatsagoodspot-app/eslint-config": "*",
+    "@thatsagoodspot-app/typescript-config": "*",
+    "@thatsagoodspot-app/types": "1.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -1,0 +1,31 @@
+{
+  "name": "@thatsagoodspot-app/server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/app.ts",
+    "build": "esbuild src/app.ts --bundle --platform=node --outfile=dist/index.js --external:express --external:cors",
+    "start": "node dist/app.js",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@repo/ui": "*",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@thatsagoodspot-app/eslint-config": "*",
+    "@thatsagoodspot-app/types": "1.0.0",
+    "@thatsagoodspot-app/typescript-config": "*",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "esbuild": "^0.23.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.6",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
+  }
+}

@@ -15,6 +15,20 @@
         "!.next/cache/**"
       ]
     },
+    "build:frontend": {
+      "outputs": [
+        "packages/frontend/dist/**",
+        "packages/frontend/.next/**"
+      ],
+      "dependsOn": [
+        "build:backend"
+      ]
+    },
+    "build:backend": {
+      "outputs": [
+        "packages/backend/dist/**"
+      ]
+    },
     "lint": {
       "dependsOn": [
         "^lint"
