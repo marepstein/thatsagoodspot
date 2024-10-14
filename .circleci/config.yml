@@ -1,11 +1,91 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  node-executor:
     docker:
-      - image: alpine:3.15
+      - image: circleci/node:18.x
+
+jobs:
+  install-backend-dependencies:
+    executor: node-executor
     steps:
+      - checkout
       - run:
-          name: The First Step
-          command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+          name: Navigate to Server Directory
+          command: cd server
+      - run:
+          name: Install Backend Dependencies
+          command: yarn install
+
+  build-backend:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Navigate to Server Directory
+          command: cd server
+      - run:
+          name: Build Backend
+          command: yarn build
+
+  test-backend:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Navigate to Server Directory
+          command: cd server
+      - run:
+          name: Run Backend Tests
+          command: yarn test
+  
+   install-frontend-dependencies:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Navigate to Frontend Directory
+          command: cd frontend
+      - run:
+          name: Install Frontend Dependencies
+          command: yarn install
+
+  build-frontend:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Navigate to Frontend Directory
+          command: cd frontend
+      - run:
+          name: Build Frontend
+          command: yarn build
+
+  test-frontend:
+    executor: node-executor
+    steps:
+      - checkout
+      - run:
+          name: Navigate to Frontend Directory
+          command: cd frontend
+      - run:
+          name: Run Frontend Tests
+          command: yarn test
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - install-backend-dependencies
+      - install-frontend-dependencies
+      - build-backend:
+          requires:
+            - install-backend-dependencies
+      - test-backend:
+          requires:
+            - build-backend
+      - build-frontend:
+          requires:
+            - install-frontend-dependencies
+      - test-frontend:
+          requires:
+            - build-frontend
